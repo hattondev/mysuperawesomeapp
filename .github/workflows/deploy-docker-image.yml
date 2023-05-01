@@ -32,15 +32,16 @@ jobs:
         with:
           context: './app/src'
           file: ./app/Dockerfile
+          push: true
           tags: |
-            ${{vars.REGISTRY_URL}}/images/mysuperawesomeapp:latest
+            ${{vars.REGISTRY_URL}}/images/mysuperawesomeapp:${{ github.sha }}
           labels: |
             org.opencontainers.image.description=mysuperawesomeapp Docker image
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: '${{vars.REGISTRY_URL}}/images/mysuperawesomeapp:latest'
+          image-ref: '${{vars.REGISTRY_URL}}/images/mysuperawesomeapp:${{ github.sha }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
