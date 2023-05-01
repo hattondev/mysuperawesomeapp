@@ -41,7 +41,7 @@ jobs:
         id: scan
         uses: crazy-max/ghaction-container-scan@v2
         with:
-          image: ${{secrets.REGISTRY_URL}}/images/app-test22:latest
+          image: ${{secrets.REGISTRY_URL}}/images/mysuperawesomeapp:latest
           dockerfile: ./app/Dockerfile
 
       - name: Build and push
