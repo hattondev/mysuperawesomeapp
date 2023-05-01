@@ -47,6 +47,9 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+        env:
+          TRIVY_USERNAME: ${{secrets.REGISTRY_USERNAME}}
+          TRIVY_PASSWORD: ${{secrets.REGISTRY_PASSWORD}}
 
       - name: Build and push
         uses: docker/build-push-action@v3
